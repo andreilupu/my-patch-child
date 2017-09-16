@@ -1,0 +1,21 @@
+version: 2
+branches:
+  only:
+    - master
+jobs:
+  build:
+    working_directory: /app
+    docker:
+      - image: andreilupu/headless-chrome-shots:latest
+    steps:
+      - run: cd /app && mkdir ss && ls
+      - run: cd /app && node shot.js --url=https://andrei-lupu.com --out=ss/home
+      - run: cd /app && node shot.js --url=https://andrei-lupu.com --out=ss/home-tablet --screen=tablet
+      - run: cd /app && node shot.js --url=https://andrei-lupu.com --out=ss/home-mobile --screen=mobile
+      - run: cd /app && node shot.js --url=https://andrei-lupu.com/wordcamp/my-journey-at-wordcamp-europe-2017 --out=ss/article
+      - run: cd /app && node shot.js --url=https://andrei-lupu.com/about-me --out=ss/about
+      - run: cd /app && node shot.js --url=https://andrei-lupu.com/team-work/the-art-of-assumption-making/ --out=ss/article2
+
+      - store_artifacts:
+          path: /app/ss/
+          destination: al-screenshots
