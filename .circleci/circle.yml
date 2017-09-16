@@ -15,6 +15,7 @@ jobs:
       - run: cd /app && node shot.js --url=https://andrei-lupu.com/wordcamp/my-journey-at-wordcamp-europe-2017 --out=ss/article
       - run: cd /app && node shot.js --url=https://andrei-lupu.com/about-me --out=ss/about
       - run: cd /app && node shot.js --url=https://andrei-lupu.com/team-work/the-art-of-assumption-making/ --out=ss/article2
+      - run: cd /app && node shot.js --url=https://andrei-lupu.com/team-work/the-art-of-assumption-making/ --out=ss/article2-mobile --screen=mobile
 
       - store_artifacts:
           path: /app/ss/
