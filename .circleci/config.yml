@@ -25,6 +25,8 @@ jobs:
 
   notify:
     working_directory:
+    docker:
+      - image: andreilupu/headless-chrome-shots:latest
     steps:
       - run:
           name: Notify server
