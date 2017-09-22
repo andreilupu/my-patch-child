@@ -18,7 +18,7 @@ jobs:
           destination: al/jsons
 
   notify:
-    working_directory:
+    working_directory: /app
     docker:
       - image: andreilupu/headless-chrome-shots:json
     steps:
