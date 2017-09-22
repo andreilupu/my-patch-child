@@ -8,27 +8,29 @@ jobs:
     docker:
       - image: andreilupu/headless-chrome-shots:json
     steps:
-#      - checkout
+      - checkout
       - run:
           name: Start screenshots
           command: cd /app && mkdir ss && mkdir json && ls -al
+
       - run: cd /app && node shot.js --configPath=.circleci/config.json
+
       - store_artifacts:
           path: /app/json/
           destination: al/jsons
 
-  notify:
-    working_directory: /app
-    docker:
-      - image: andreilupu/headless-chrome-shots:json
-    steps:
-      - run:
-          name: Notify server
-          command: curl http://qa.code711.com/dev?project=my-patch-child --max-time=10
-
-workflows:
-  version: 2
-  build-test-and-deploy:
-    jobs:
-      - build
-      - notify
+#  notify:
+#    working_directory: /app
+#    docker:
+#      - image: andreilupu/headless-chrome-shots:json
+#    steps:
+#      - run:
+#          name: Notify server
+#          command: curl http://qa.code711.com/dev?project=my-patch-child --max-time=10
+#
+#workflows:
+#  version: 2
+#  build-test-and-deploy:
+#    jobs:
+#      - build
+##      - notify
