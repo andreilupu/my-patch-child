@@ -79,7 +79,7 @@ add_action( 'wp_enqueue_scripts', 'patch_child_enqueue_styles', 11 );
 
 */
 
-/*
+/**
  * Let me give you a second example like the above only in this case we will assume you have copied the whole style.css from the parent into your child theme
  */
 
