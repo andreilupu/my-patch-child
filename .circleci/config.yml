@@ -11,8 +11,8 @@ jobs:
 #      - checkout
       - run:
           name: Start screenshots
-          command: cd /app && mkdir ss && mkdir json && ls
-      - run: cd /app && node shot.js --configPath=./.circleci/config.json
+          command: cd /app && mkdir ss && mkdir json && ls -al
+      - run: cd /app && node shot.js --configPath=.circleci/config.json
       - store_artifacts:
           path: /app/json/
           destination: al/jsons
