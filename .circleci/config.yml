@@ -6,31 +6,25 @@ jobs:
   build:
     working_directory: /app
     docker:
-      - image: andreilupu/headless-chrome-shots:latest
+      - image: andreilupu/headless-chrome-shots:json
     steps:
+      - checkout
       - run:
           name: Start screenshots
-          command: cd /app && mkdir ss && ls
-      - run: cd /app && node shot.js --url=https://andrei-lupu.com --out=ss/home
-      - run: cd /app && node shot.js --url=https://andrei-lupu.com --out=ss/home-tablet --screen=tablet
-      - run: cd /app && node shot.js --url=https://andrei-lupu.com --out=ss/home-mobile --screen=mobile
-      - run: cd /app && node shot.js --url=https://andrei-lupu.com/wordcamp/my-journey-at-wordcamp-europe-2017 --out=ss/article
-      - run: cd /app && node shot.js --url=https://andrei-lupu.com/about-me --out=ss/about
-      - run: cd /app && node shot.js --url=https://andrei-lupu.com/team-work/the-art-of-assumption-making/ --out=ss/article2
-      - run: cd /app && node shot.js --url=https://andrei-lupu.com/team-work/the-art-of-assumption-making/ --out=ss/article2-mobile --screen=mobile
-
+          command: cd /app && mkdir ss && mkdir json && ls
+      - run: cd /app && node shot.js --configPath=./.circleci/config.json
       - store_artifacts:
-          path: /app/ss/
-          destination: al-screenshots
+          path: /app/json/
+          destination: al/jsons
 
   notify:
     working_directory:
     docker:
-      - image: andreilupu/headless-chrome-shots:latest
+      - image: andreilupu/headless-chrome-shots:json
     steps:
       - run:
           name: Notify server
-          command: curl http://qa.code711.com/dev?project=my-patch-child
+          command: curl http://qa.code711.com/dev?project=my-patch-child --max-time=10
 
 workflows:
   version: 2

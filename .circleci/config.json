@@ -1,0 +1,13 @@
+{
+  "site1" : {
+    "home" : {
+      "url": "https://andrei-lupu.com",
+      "out": "/app/json/home.json"
+    },
+    "home-mobile" : {
+      "url": "https://andrei-lupu.com",
+      "out": "/app/json/home-m.json",
+      "screen": "mobile"
+    }
+  }
+}
