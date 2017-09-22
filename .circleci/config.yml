@@ -4,7 +4,7 @@ branches:
     - master
 jobs:
   build:
-    working_directory: /app
+    working_directory: /tmp
     docker:
       - image: andreilupu/headless-chrome-shots:json
     steps:
@@ -13,7 +13,7 @@ jobs:
           name: Start screenshots
           command: cd /app && mkdir ss && mkdir json && ls -al
 
-      - run: cd /app && node shot.js --configPath=.circleci/config.json
+      - run: cd /app && node shot.js --configPath=/tmp/.circleci/config.json
 
       - store_artifacts:
           path: /app/json/
