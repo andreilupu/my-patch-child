@@ -10,11 +10,13 @@ jobs:
     steps:
       - checkout
 
+#      - run: cd /tmp/chrome-shots && npm help puppeteer
       - run:
           name: Call the shots
           command: |
             set -ex
             cd /tmp/app
+            mkdir json
             node /tmp/chrome-shots/shot.js --configPath=/tmp/app/.circleci/config.json
 
       - store_artifacts:
