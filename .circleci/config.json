@@ -2,11 +2,11 @@
   "site1" : {
     "home" : {
       "url": "https://andrei-lupu.com",
-      "out": "home.json"
+      "out": "json/home.json"
     },
     "home-mobile" : {
       "url": "https://andrei-lupu.com",
-      "out": "home-m.json",
+      "out": "json/home-m.json",
       "screen": "mobile"
     }
   }
