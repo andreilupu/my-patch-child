@@ -8,21 +8,20 @@ jobs:
     docker:
       - image: andreilupu/headless-chrome-shots:json
     steps:
-      - checkout
+#      - checkout
 #      - run:
 #          name: Start screenshots
 #          command: cd /app && set -ex && mkdir json &&
 
       - run:
-          name: Install Docker client
+          name: Call the shots
           command: |
             set -ex
-            cd /app
-            mkdir json
-            node shot.js --configPath=/tmp/app/.circleci/config.json
+            cd /tmp/app
+            node /tmp/chrome-shots/shot.js --configPath=/tmp/app/.circleci/config.json
 
       - store_artifacts:
-          path: /app/json/
+          path: /tmp/app/json/
           destination: al/jsons
 
 #  notify:
