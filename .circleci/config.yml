@@ -8,10 +8,7 @@ jobs:
     docker:
       - image: andreilupu/headless-chrome-shots:json
     steps:
-#      - checkout
-#      - run:
-#          name: Start screenshots
-#          command: cd /app && set -ex && mkdir json &&
+      - checkout
 
       - run:
           name: Call the shots
